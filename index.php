@@ -17,8 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Links del snippet ---------->
     <script src="script/login.js"></script>
@@ -41,20 +39,20 @@
                         for="password">Contraseña</label> <input class="form-styling" type="password" name="password"
                         placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span
                             class="ui"></span>Mantener sesión iniciada</label>
-                    <div class="btn-animate"> <a class="btn-signin">Entrar</a> </div>
+                    <div class="btn-animate"> <a href="./paginas/admin.php" class="btn-signin">Entrar</a> </div>
                 </form>
                 <form class="form-signup" action="" method="post" name="form">
-                    <label for="fullname">Nombre Completo</label>
-                    <input class="form-styling" type="text" name="fullname" placeholder="" /> 
-                    <label
-                        for="email">Email</label> <input class="form-styling" type="text" name="email" placeholder="" />
-                        <label
-                        for="fecNan">Fecha de nacimiento</label> <input class="form-styling" type="date" name="fecNan" placeholder="" />
+                    <label for="fullname">Nombre de Usuario</label>
+                    <input class="form-styling" type="text" name="fullname" placeholder="" />
+                    <label for="email">Email</label> <input class="form-styling" type="text" name="email"
+                        placeholder="" />
+                    <label for="fecNan">Fecha de nacimiento</label> <input class="form-styling" type="date"
+                        name="fecNan" placeholder="" />
                     <label for="password">Contraseña</label> <input class="form-styling" type="password" name="password"
                         placeholder="" /> <label for="confirmpassword">Confirmar contraseña</label> <input
                         class="form-styling" type="password" name="confirmpassword" placeholder="" /> <a
                         ng-click="checked = !checked" class="btn-signup">Registrarse</a>
-                        </form>
+                </form>
                 <div class="success">
                     <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" id="check"
