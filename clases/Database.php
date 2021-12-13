@@ -16,10 +16,7 @@
 		 */
 		private function __construct() 
 		{ 
-			$this->mysqli = new mysqli("
-			fdb33.awardspace.net","
-			4007072_shishaword",".Juan2pedroo","
-			4007072_shishaword") ;
+			$this->mysqli = new mysqli("localhost","root",".Juan2pedroo","shishaword") ;
 
 			if ($this->mysqli->connect_errno)
 				throw new Exception("Se ha producido un error de conexión con la base de datos.") ;
