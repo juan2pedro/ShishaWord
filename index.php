@@ -1,6 +1,18 @@
+<?php
+	$user = $_POST["user"]??"" ;
+	$pas = $_POST["pas"]??"" ;
+
+    require_once "./clases/Sesion.php" ;
+
+	if ($user!="" and $pas!==""):
+		$sesion = Sesion::sesion() ;
+		if (!$sesion->login($user, $pas)) $error = "Email o contraseña incorrecta" ;
+	endif;
+
+?>
+
 <!doctype html>
 <html lang="es">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,6 +36,7 @@
 
 </head>
 
+
 <body>
     <div class="container">
         <div class="frame">
@@ -34,14 +47,17 @@
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="" method="post" name="form"> <label for="username">Usuario</label>
-                    <input class="form-styling" type="text" name="username" placeholder="" /> <label
-                        for="password">Contraseña</label> <input class="form-styling" type="password" name="password"
-                        placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span
-                            class="ui"></span>Mantener sesión iniciada</label>
-                    <div class="btn-animate"> <a href="./paginas/admin.php" class="btn-signin">Entrar</a> </div>
+                <form class="form-signin"  method="POST" name="form"> <label for="user">Usuario</label>
+                    <input class="form-styling" type="text" name="user" placeholder="" value="<?= $user ?>"/> <label
+                        for="pas">Contraseña</label> <input class="form-styling" type="password" name="pas"
+                        placeholder="" value="<?= $pas ?>" /> <input type="checkbox" id="checkbox" /> <!--   <label for="checkbox"><span
+                            class="ui"></span>Mantener sesión iniciada</label> -->
+                <!--    <div class="btn-animate"> <a class="btn-signin">Entrar</a> </div>-->
+                    <button class="btn-animate btn-signin">Entrar</button> 
                 </form>
-                <form class="form-signup" action="" method="post" name="form">
+
+                
+                <form class="form-signup" method="POST" name="form">
                     <label for="fullname">Nombre de Usuario</label>
                     <input class="form-styling" type="text" name="fullname" placeholder="" />
                     <label for="email">Email</label> <input class="form-styling" type="text" name="email"
@@ -52,17 +68,16 @@
                         placeholder="" /> <label for="confirmpassword">Confirmar contraseña</label> <input
                         class="form-styling" type="password" name="confirmpassword" placeholder="" /> <a
                         ng-click="checked = !checked" class="btn-signup">Registrarse</a>
+                        <?php  if (isset($error)): echo '<script type="text/javascript">', 'errorLogin();', '</script>'; ?>
+
+    <div class="alert alert-danger alert-autocloseable-danger">I'm an autocloseable danger message. I will hide in 5 seconds. </div>
+    
+    <?= $error ; ?>
+
+
+<?php endif ; ?>
                 </form>
-                <div class="success">
-                    <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" id="check"
-                        ng-class="checked ? 'checked' : ''"></svg>
-                    <path fill="#ffffff"
-                        d="M40.61,23.03L26.67,36.97L13.495,23.788c-1.146-1.147-1.359-2.936-0.504-4.314 c3.894-6.28,11.169-10.243,19.283-9.348c9.258,1.021,16.694,8.542,17.622,17.81c1.232,12.295-8.683,22.607-20.849,22.042 c-9.9-0.46-18.128-8.344-18.972-18.218c-0.292-3.416,0.276-6.673,1.51-9.578" />
-                    <div class="successtext">
-                        <p> Thanks for signing up! Check your email for confirmation.</p>
-                    </div>
-                </div>
+            
             </div>
             <div class="forgot"> <a href="#">¿Has olvidado tu contraseña?</a> </div>
 </body>
