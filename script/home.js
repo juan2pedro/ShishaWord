@@ -1,4 +1,3 @@
-
 (function ($) {
 	"use strict";
 
@@ -70,3 +69,16 @@
 	});
 
 })(jQuery);
+
+function confirmacion(e) {
+	if (confirm("¿Seguro que quieres eliminar este modelo?")) {
+		return true;
+	} else {
+		e.preventDefault();
+	}
+}
+let eliminar = document.querySelectorAll(".eliminados");
+
+for (var i = 0; i < eliminar.length; i++) {
+	eliminar[i].addEventListener('click', confirmacion);
+}

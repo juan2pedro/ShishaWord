@@ -461,7 +461,7 @@ body.nav-active .nav {
 body.nav-active .nav:before,
 body.nav-active .nav:after {
 	width: 250px;
-	height: 350px;
+	height: 225px;
 	border-radius: 15px;
 }
 

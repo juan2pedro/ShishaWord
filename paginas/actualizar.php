@@ -1,28 +1,33 @@
 <?php
-
+//importamos la clase modelos
 require_once "../clases/modelos.php";
+//iniciamos la sesion
 session_start();
-if(!isset($_SESSION["_user"])){
-    header("Location: ../index.php");
+if (!isset($_SESSION["_user"])) {
+   header("Location: ../index.php");
 }
-if (!empty($_POST)):
-$id = $_POST["id"];
+if (!empty($_POST)) :
+   $id = $_POST["id"];
+   //Damos valor al objeto modelo con la nueva informacion
+   $Modelo = Modelo::searchModelById($id);
+   $Modelo->idModelo = $_POST["id"];
+   $Modelo->nombreModelo = $_POST["nombre"];
+   $Modelo->fechaModelo = $_POST["fecha"];
+   $Modelo->descripcionModelo = $_POST["descripcion"];
+   $Modelo->precioModelo = $_POST["precio"];
+   //llamamos a la funcion para que actualize los datos anteriores
+   $Modelo->actualizar();
 
-$Modelo = Modelo::searchModelById($id);
-
-$Modelo ->idModelo = $_POST["id"];
-$Modelo ->nombreModelo = $_POST["nombre"];
- $Modelo ->fechaModelo = $_POST["fecha"];
- $Modelo ->descripcionModelo = $_POST["descripccion"];
- $Modelo ->precioModelo = $_POST["precio"];
- $Modelo->actualizar() ;
-
- header("location: home.php") ;
- die() ;
+   header("location: home.php");
+   die();
 
 endif;
-$id = $_GET["idModelo"]??"" ;
+$id = $_GET["idModelo"] ?? "";
+//Cargamos el Modelo seleccionado
 $Modelo = Modelo::searchModelById($id);
+//importamos el contro de sesion
+require_once("../clases/timeout.php");
+
 ?>
 
 <!doctype html>
@@ -43,18 +48,13 @@ $Modelo = Modelo::searchModelById($id);
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- Bootstrap CSS -->
-
-
-   <link rel="icon" type="image/x-icon" href="../media/favicon-32x32.png">
-   <!-- Bootstrap  y Popper js  -->
-
 
    <title>Shisha world!</title>
    <meta http-equiv="Expires" content="0">
    <meta http-equiv="Last-Modified" content="0">
    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
    <meta http-equiv="Pragma" content="no-cache">
+   <link rel="icon" type="image/x-icon" href="../media/favicon.ico">
 
 </head>
 
@@ -79,10 +79,9 @@ $Modelo = Modelo::searchModelById($id);
       <div class="nav__content">
          <ul class="nav__list">
             <li class="nav__list-item"><a href="home.php" class="hover-target">Home</a></li>
-            <li class="nav__list-item active-nav"><a href="#" class="hover-target">Modelo</a></li>
-            <li class="nav__list-item"><a href="#" class="hover-target">Añadir</a></li>
-            <li class="nav__list-item"><a href="#" class="hover-target">Perfil</a></li>
-            <li class="nav__list-item"><a href="https://www.google.com/" class="hover-target">Salir</a></li>
+            <li class="nav__list-item active-nav"><a href="#" class="hover-target">Editar Modelo</a></li>
+            <li class="nav__list-item"><a href="./nuevoModelo.php" class="hover-target">Añadir Modelo</a></li>
+            <li class="nav__list-item"><a href="../clases/salir.php" class="hover-target">Salir</a></li>
          </ul>
       </div>
    </div>
@@ -99,7 +98,7 @@ $Modelo = Modelo::searchModelById($id);
    <div class='cursor3' id="cursor3"></div>
    <section>
       <div class="container">
-
+         <!-- Si hay algun error al cargar el modelo salta aqui -->
          <?php
          if (empty($_GET)) :
          ?>
@@ -108,6 +107,7 @@ $Modelo = Modelo::searchModelById($id);
             </div>
          <?php
          else :
+               //Sino carga la pagina normalmente y se rellena la informaciond del modelo seleccionado
             echo " <div class=\"row\">";
          ?>
 
@@ -123,7 +123,7 @@ $Modelo = Modelo::searchModelById($id);
                      <p class="display-30">
                         <?= (is_null($Modelo->descripcionModelo)) ? "Descripción rrronea" : $Modelo->descripcionModelo ?>
                      </p>
-                     <a href="../clases/eliminar.php?idModelo=<?= $Modelo->idModelo ?>"   class="read-more">Eliminar</a>
+                     <a href="../clases/eliminar.php?idModelo=<?= $Modelo->idModelo ?>" class="read-more">Eliminar</a>
                   </div>
                   <div class="card-footer">
                      <ul>
@@ -134,20 +134,25 @@ $Modelo = Modelo::searchModelById($id);
                </article>
             </div>
             <div class="col-md-5">
+               <!-- Recogemos la informacion para actualizarla -->
                <h4><strong>Editar modelo</strong></h4>
                <form method="post">
-                  <input type="hidden" name="id" value="<?= $id ?>"/>
+                  <input type="hidden" name="id" value="<?= $id ?>" />
                   <div class="form-group">
-                     <input type="text" id="nombre" class="form-control" name="nombre" value="<?= $Modelo->nombreModelo?>" placeholder="Nombre">
+                     <h4>Nombre del modelo:</h4>
+                     <input type="text" id="nombre" class="form-control" name="nombre" value="<?= $Modelo->nombreModelo ?>" placeholder="Nombre">
                   </div>
                   <div class="form-group">
-                     <input type="number" id="fecha" class="form-control" name="fecha" value="<?= $Modelo->fechaModelo?>" placeholder="Fecha">
+                     <h4>Año de salida:</h4>
+                     <input type="number" id="fecha" class="form-control" name="fecha" value="<?= $Modelo->fechaModelo ?>" placeholder="Fecha">
                   </div>
                   <div class="form-group">
-                     <input type="number" id="precio" class="form-control" name="precio" value="<?= $Modelo->precioModelo?>" placeholder="Precio">
+                     <h4>Precio</h4>
+                     <input type="number" id="precio" class="form-control" name="precio" value="<?= $Modelo->precioModelo ?>" placeholder="Precio">
                   </div>
                   <div class="form-group">
-                     <textarea class="form-control" id="descripcion" name="descripcion" value="<?= $Modelo->descripcionModelo?>" rows="3" placeholder="Descripción"></textarea>
+                     <h4>Descripcion del modelo:</h4>
+                     <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Descripción"><?= $Modelo->descripcionModelo ?></textarea>
                   </div>
                   <button class="btn-w btn-primary">Editar </button>
                   <a href="home.php" class="btn btn-danger">Cancelar</a>
