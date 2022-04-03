@@ -2,11 +2,7 @@
 
 ## Tematica
 
-La tematica del sitio es un foro sobre cachimbas y a la vez tener una gran base de datos. Pudiendo añadir así los usuarios subir los diferentes modelos,marcas,sabores, mezclas, etc
-
-- En la version actual solo esta el modo administrador, con el cual podemos ver los diferentes modelos, editarlos y eliminarlos.Mi idea era poder agregar mas funciones como el Añadir modelos, y poder administrar los usuarios, pero por varios problemas no ha sido posible.
-
-- Actualmente solo podemos iniciar sesion como "usuario" y contraseña: "usuario", pero si añadios un usuario a la base de datos, funcionaria perfectamente
+La tematica del sitio es un foro sobre cachimbas y a la vez tener una gran base de datos. Pudiendo añadir así los usuarios subir los diferentes modelos,marcas,sabores, mezclas, etc, siendo siempre verificados por un admin para comprobar el contenido de la información subido
 
 # TOUR POR EL SITIO WEB
 
@@ -30,6 +26,10 @@ Desde esta pagina podemos actualizar la informacion basica del modelo como nombr
 - ## VENTA DE ALERTA
 CUANDO NO SE HAN ENCONTRADOS MODELOS EN LA BASE DE DATOS QUE MOSTRAR.
 ![image](https://user-images.githubusercontent.com/55956200/145902407-44cfbb91-637d-4093-9ea3-3eab5d82c7e8.png)
+
+# Esquema E/R 
+![image](https://user-images.githubusercontent.com/55956200/161444666-cff1f433-db4f-4b4f-87fa-0132d0365ec8.png)
+
 
 - ## Tecnología
 - [Ayax] - Front / Framerwork!
