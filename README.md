@@ -28,7 +28,7 @@ CUANDO NO SE HAN ENCONTRADOS MODELOS EN LA BASE DE DATOS QUE MOSTRAR.
 ![image](https://user-images.githubusercontent.com/55956200/145902407-44cfbb91-637d-4093-9ea3-3eab5d82c7e8.png)
 
 # Esquema E/R 
-![image](https://user-images.githubusercontent.com/55956200/161444666-cff1f433-db4f-4b4f-87fa-0132d0365ec8.png)
+![image](https://user-images.githubusercontent.com/55956200/162184427-cb48311c-234f-4c3b-a671-84a22e9e6cae.png)
 
 
 - ## Tecnología
