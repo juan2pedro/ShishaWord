@@ -36,3 +36,9 @@ CUANDO NO SE HAN ENCONTRADOS MODELOS EN LA BASE DE DATOS QUE MOSTRAR.
 - [jQuery] - Front / Framerwork
 - [PHP] - Backend
 - [Laravel] - Backend / Framerwork
+
+## Despliegue
+
+Actualmente está desplegado en: ("http://shishaword.atwebpages.com/index.php") usando un dominino gratuito.
+
+La base de datos se aloja en el mismo hosting
