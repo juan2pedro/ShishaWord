@@ -17,7 +17,7 @@ class Database
 	// Realizamos la conexión con el servidor de bases de datos
 	private function __construct(){
 		//Conector con a base de datos indicando la ip del servidor, usuario de la bbdd, contraseña, y bbdd a la que nos queremos conectar
-		$this->mysqli = new mysqli("localhost", "root", ".Juan2pedroo", "shishaword");
+		$this->mysqli = new mysqli("localhost", "root", "", "shishaword");
 		//Atrapamos la excepcio si tenemos un error
 		if ($this->mysqli->connect_errno)
 			throw new Exception("Se ha producido un error de conexión con la base de datos.");

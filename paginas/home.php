@@ -27,7 +27,7 @@ require_once("../clases/timeout.php");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -76,7 +76,11 @@ require_once("../clases/timeout.php");
 
     <div class="section full-height over-hide">
         <div class="switch-wrap">
-            <h1>Shisha Word!</h1>
+            <section>
+                <p class="text">
+                    shishaword
+                </p>
+            </section>
             <p>Tenemos la mayor base de datos.</p>
         </div>
     </div>
@@ -88,7 +92,7 @@ require_once("../clases/timeout.php");
     <section>
         <div class="container">
             <?php
-    //Si no hemos podido recuperar la informacion de la BBDD salta un error
+            //Si no hemos podido recuperar la informacion de la BBDD salta un error
             if (empty($datos)) :
             ?>
                 <div class="alert alert-danger">
@@ -132,6 +136,9 @@ require_once("../clases/timeout.php");
         </div>
     </section>
     <script src="../script/home.js"></script>
+    <script src="../script/smoke.js">window.onload = smokee;</script>
+    
 </body>
 <?php endif; ?>
+
 </html>
